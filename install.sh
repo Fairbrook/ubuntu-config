@@ -54,6 +54,7 @@ then
  ln -s ./kitty-themes/themes/gruvbox_dark.conf ~/.config/kitty/theme.conf
  echo "include ./theme.conf" >> ~/$KITTYFILE
  echo "background_opacity 0.85" >> ~/$KITTYFILE
+ echo "enable_audio_bell no" >> ~/$KITTYFILE
 fi
 
 if [[ ! -f ~/${ZDOTFILE} ]]; then
