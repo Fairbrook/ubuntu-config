@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 /usr/lib/apt/apt-helper download-file https://debian.sur5r.net/i3/pool/main/s/sur5r-keyring/sur5r-keyring_2025.03.09_all.deb keyring.deb SHA256:2c2601e6053d5c68c2c60bcd088fa9797acec5f285151d46de9c830aaba6173c
 sudo apt install ./keyring.deb
 echo "deb [signed-by=/usr/share/keyrings/sur5r-keyring.gpg] http://debian.sur5r.net/i3/ $(grep '^VERSION_CODENAME=' /etc/os-release | cut -f2 -d=) universe" | sudo tee /etc/apt/sources.list.d/sur5r-i3.list
@@ -9,3 +10,11 @@ sudo wget -O /usr/bin/i3exit https://gist.githubusercontent.com/Fairbrook/40d04f
 sudo chmod +x /usr/bin/i3exit
 
 sudo apt install -y polybar rofi notify-osd
+
+git clone https://github.com/yshui/picom.git
+sudo apt install -y libconfig-dev libdbus-1-dev libegl-dev libev-dev libgl-dev libepoxy-dev libpcre2-dev libpixman-1-dev libx11-xcb-dev libxcb1-dev libxcb-composite0-dev libxcb-damage0-dev libxcb-glx0-dev libxcb-image0-dev libxcb-present-dev libxcb-randr0-dev libxcb-render0-dev libxcb-render-util0-dev libxcb-shape0-dev libxcb-util-dev libxcb-xfixes0-dev meson ninja-build uthash-dev
+cd picom
+meson setup --buildtype=release build
+ninja -C build
+sudo ninja -C build install
+sudo rm -rf picom
