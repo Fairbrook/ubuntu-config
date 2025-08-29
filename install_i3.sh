@@ -8,4 +8,4 @@ sudo apt install i3
 sudo wget -O /usr/bin/i3exit https://gist.githubusercontent.com/Fairbrook/40d04fed59068d3be57a7014c9085987/raw/4d18543b7ea4fc035de1f3d2cf06411b5943f4b4/i3exit
 sudo chmod +x /usr/bin/i3exit
 
-sudo apt install -y polybar rofi
+sudo apt install -y polybar rofi notify-osd
